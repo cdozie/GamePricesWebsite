@@ -4,6 +4,6 @@ A website that displays games on sale and notifies users of the games on their w
 
 Main Python File: app.py  
 
-Main JavaScript File : index.tsx/bundle.js.  
+Main JavaScript File : index.tsx  
 
 MySQL Database running from PC
