@@ -1,4 +1,5 @@
-# GamePricesWebsite
+# Game Sale and Price Tracking Website
+
 A website that displays games on sale and notifies users of the games on their wishlist that have gone on sale. 
 
 Main Python File: app.py  
