@@ -1,0 +1,14 @@
+# Local credentials and generated Python/session state
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.google-cookie
+flask_session/
+celerybeat-schedule*
+
+# Installed dependencies and local virtual environments
+node_modules/
+.venv/
+venv/

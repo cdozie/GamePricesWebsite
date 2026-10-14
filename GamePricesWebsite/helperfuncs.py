@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from collections import Counter
 from bs4 import BeautifulSoup
 import mysql.connector
+import config
 from mysql.connector import errorcode
 import asyncio
 import aiohttp
@@ -55,42 +56,18 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-# def connection():
-#     dbconn = MySQLdb.connect(host = "myusername.mysql.pythonanywhere-services.com",
-#                              user = "myusername",
-#                              passwd = "******",
-#                              db = "myusername$mydatabasename")
-#     cur = dbconn.cursor()
-#     return (cur, dbconn)
-
-
-# from flask import Flask, flash, redirect, render_template, request, session, url_for, g, jsonify
 from flask_mysqldb import MySQL
-# from helperfuncs import * 
-# from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
-# from werkzeug.security import check_password_hash, generate_password_hash
-
-# import mysql.connector
-
-# config = {
-#   'user': 'root',
-#   'password': 'Chimchid8912!',
-#   'host': '127.0.0.1',
-#   'database': 'main_schema',
-#   'raise_on_warnings': True
-# }
-
-# cnx = mysql.connector.connect(**config)
-
-# cnx.close()
-
 
 
 def create_connection():
     try:
-        cnx = mysql.connector.connect(user='root',
-        password = "Chimchid8912!",
-                                        database='main_schema')
+        cnx = mysql.connector.connect(
+            host=config.MYSQL_HOST,
+            port=config.MYSQL_PORT,
+            user=config.MYSQL_USER,
+            password=config.MYSQL_PASSWORD,
+            database=config.MYSQL_DATABASE,
+        )
         cursor = cnx.cursor(buffered=True, dictionary = True)
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -140,7 +117,6 @@ db,cursor = create_connection()
 
 # app.config['MYSQL_HOST'] = 'localhost'
 # app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = 'Chimchid8912!'
 # app.config['MYSQL_DB'] = 'main_schema'
 # mysql = MySQL(app)
 
